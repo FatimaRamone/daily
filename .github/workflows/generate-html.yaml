@@ -1,0 +1,24 @@
+name: Subida de archivo cada minuto
+
+on:
+  schedule:
+    - cron: '* * * * *'  # Ejecutar cada minuto
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Crear archivo HTML
+      run: echo "<html><body><h1>¡Este es un nuevo archivo generado automáticamente!</h1></body></html>" > "new_upload_$(date +"%Y%m%d%H%M%S").html"
+
+    - name: Inicializar Git
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+
+    - name: Agregar y hacer commit de cambios
+      run: |
+        git add .
+        git commit -m "Subida de archivo HTML generado automáticamente"
+        git push
