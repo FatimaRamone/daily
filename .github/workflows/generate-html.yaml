@@ -17,7 +17,7 @@ jobs:
       run: |
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
-        git remote set-url origin "https://github.com/${{ github.repository }}.git"
+        git remote set-url origin "https://github.com/daily.git"
 
     - name: Agregar y hacer commit de cambios
       run: |
